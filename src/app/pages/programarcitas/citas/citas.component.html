@@ -1,0 +1,97 @@
+<h2>Formulario Crear Primera Cita </h2>
+
+<!-- <form (ngSubmit)="guardarPaciente()" #formularioPaciente="ngForm"> -->
+<form [formGroup]="citaForm" (submit)="guardarPaciente()">
+  <div class="row">
+    <!-- Columna izquierda para el paciente -->
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="nombre">Paciente:</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="ti-user"></i></div>
+          <select class="form-control custom-select">
+            <option>Seleccione Un Paciente</option>
+            <option>Country 2</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Columna derecha para el dentista -->
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="nombre">Dentista:</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="ti-user"></i></div>
+          <select class="form-control custom-select">
+            <option>Seleccione Un odontologo</option>
+            <option>Country 2</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="nombre">Tratamiento:</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="ti-user"></i></div>
+          <select class="form-control custom-select">
+            <option>Seleccione Un Tratamiento</option>
+            <option>Country 2</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="nombre">Seccion de Tiempo:</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="ti-user"></i></div>
+          <select class="form-control" 
+            type="number" required="" 
+            id="tiempo"
+            formControlName="tiempo"
+          >
+            <option value="" selected>Seleccione Tiempo</option>
+            <option value=1>30min</option>
+            <option value=2>1hr</option>
+            <option value=3>1:30hr</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Columna izquierda para la hora final -->
+    <div class="col-md-4 text-center">
+      <div class="form-group">
+        <label for="email">Fecha:</label>
+        <input type="date" formControlName="fecha" class="form-control" placeholder="dd/mm/yyyy">
+      </div>
+    </div>
+  
+    <!-- Columna central para la hora de inicio -->
+    <div class="col-md-4 text-center">
+      <div class="form-group">
+        <label for="fechaHora">Hora Inicio</label>
+        <input type="time" id="fechaHora" formControlName="hora_inicio" class="form-control">
+      </div>
+    </div>
+  
+    <!-- Columna derecha para la fecha -->
+    <div class="col-md-4 text-center">
+      <div class="form-group">
+        <label for="fechaHora">Hora Final</label>
+        <input type="time" id="fechaHora" formControlName="hora_final" class="form-control" >
+      </div>
+    </div>
+  </div>
+
+  <!-- <button type="submit" class="btn btn-primary" (click)="guardarPaciente()">Guardar</button>
+  <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button> -->
+  <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Registrar</button>
+  <button type="submit" class="btn btn-inverse waves-effect waves-light" (click)="cancelar()">Cancel</button>
+</form>

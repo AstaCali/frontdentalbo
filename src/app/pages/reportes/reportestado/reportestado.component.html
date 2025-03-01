@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Reporte de Estado</h4>
+        <h6 class="card-subtitle">{{ titulo_fecha }} &amp; Total:{{ totalReportePagoEstado }} - {{ desde }}</h6> 
+        <!-- <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF &amp; Print</h6> -->
+
+        <div id="example23_filter" class="dataTables_filter">
+            <label><i class="fa fa-close text-danger"></i>
+                <input type="search" class="" placeholder="Filtro de Paciente" aria-controls="example23"
+                  list="datalistOptionspersonpagstate"
+                  id="exampleDataListpersonpagstate"
+                  (input)="onInputPerson($event)"
+                >
+            </label>
+            <datalist id="datalistOptionspersonpagstate">
+                <option *ngFor="let person of personArray" [value]="person.name + ' ' + person.last_name">
+            </datalist>
+        </div>
+        <div id="example23_filter" class="dataTables_filter">
+            <label><i class="fa fa-close text-danger"></i>
+                <input type="search" class="" placeholder="Filtro de Tratamiento" aria-controls="example23"
+                  list="datalistOptionspagostate"
+                  id="exampleDataListpagostate"
+                  (input)="onInputTreatment($event)"
+                >
+            </label>
+            <datalist id="datalistOptionspagostate">
+            <option *ngFor="let treatment of tratamientoArray" [value]="treatment.name_treatment">
+            </datalist>
+          <!-- <label>Search2:<input type="search" class="" placeholder="Busque Tratamiento" aria-controls="example23"></label> -->
+        </div>
+        <!-- <hr> -->
+        <div class="dt-buttons">
+            <a class="dt-button buttons-copy buttons-html5 cursor" 
+            (click)="fechaActual()"
+              [class.morado]="currentDate" 
+              tabindex="0" aria-controls="example23"><span>Hoy</span>
+            </a>
+            <a class="dt-button buttons-csv buttons-html5 cursor" 
+              (click)="actualMes()"
+              [class.morado]="mes" 
+              tabindex="0" aria-controls="example23"><span>Este Mes</span>
+            </a>
+            <a class="dt-button buttons-print" tabindex="0" aria-controls="example23"
+                (click)="onImprimir()"
+            >
+                <span><i class="mdi mdi-fax ml-2 avatar cursor"></i></span>
+            </a>
+        </div>
+        <div class="table-responsive m-t-40">
+            <div id="example23_wrapper" class="dataTables_wrapper">
+
+                <!-- <h6 class="card-subtitle">Periodo: {{ titulo_fecha }} &amp; Total:{{ totalReportePago }}</h6> -->
+                <table id="example23" class="display nowrap table table-hover table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="example23_info" style="width: 100%;">
+                    <thead>
+                    <tr role="row">
+                        <th 
+                            aria-label="Name: activate to sort column descending" 
+                            style="width: 16px;"
+                        >
+                        #</th>
+                        <th aria-label="Position: activate to sort column ascending" style="width: 239px;">
+                        Fecha Cambio de Estado</th>
+                        <th aria-label="Office: activate to sort column ascending" style="width: 118px;">
+                        Medico Comisionista</th>
+                        <th aria-label="Office: activate to sort column ascending" style="width: 118px;">
+                        Paciente</th>
+                        <th aria-label="Age: activate to sort column ascending" style="width: 56px;">
+                        Tratamiento</th>
+                        <th aria-label="Age: activate to sort column ascending" style="width: 56px;">
+                        Precio total</th>
+                        <th aria-label="Start date: activate to sort column ascending" style="width: 107px;">
+                        Saldo</th>
+                        <th aria-label="Salary: activate to sort column ascending" style="width: 91px;">
+                        Estado</th>
+                        <!-- <th aria-label="Salary: activate to sort column ascending" style="width: 91px;">
+                        Saldo</th> -->
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th rowspan="1" colspan="1">#</th>
+                        <th rowspan="1" colspan="1"> Fecha Cambio de Estado</th>
+                        <th rowspan="1" colspan="1">Medico Comisionista</th>
+                        <th rowspan="1" colspan="1">Paciente</th>
+                        <th rowspan="1" colspan="1">Tratamiento</th>
+                        <th rowspan="1" colspan="1">Precio total</th>
+                        <th rowspan="1" colspan="1">Saldo</th>
+                        <th rowspan="1" colspan="1">Estado</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+
+                    <tr role="row" class="odd" *ngFor="let reppagostate of reportePagosEstadoArray; let i = index">
+                        <td class="sorting_1">{{ i + 1 }}</td>
+                        <td>{{ reppagostate.fecha_pago | date:'MMM. d y' }}</td>
+                        <!-- <td>{{ reppagostate.fecha_pago }}</td>CAMBIAR OSEA AUMENTAR ATRIBUTO ALA BASE DE DATOS -->
+                        <td></td>
+                        <td>{{ reppagostate.Quote_detail.Quotation.Person.name }} {{reppagostate.Quote_detail.Quotation.Person.last_name}}</td>
+                        <td>{{ reppagostate.Quote_detail.Treatment.name_treatment }}</td>
+
+                        <td>{{ reppagostate.Quote_detail.discounted_price }}</td>
+                        
+                        <!-- <td>{{ reppagostate.monto }}</td> -->
+                        <td>{{ reppagostate.Quote_detail.discounted_price - reppagostate.monto }}</td>
+                        <!-- <td>{{ reppagostate.Quote_detail.estato }}</td> -->
+                        <td>
+                        <div [ngClass]="reppagostate.Quote_detail.estato ? 'label label-table label-info' : 'label label-table label-danger'">
+                            {{ reppagostate.Quote_detail.estato ? 'Pagado' : 'Pendiente' }}
+                        </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        
+        </div>
+      <div class="dataTables_wrapper">
+        <div class="dataTables_info" id="example23_info" role="status" aria-live="polite">
+          Total Pagos Bs.: 890
+        </div>
+        <div class="dataTables_paginate paging_simple_numbers">
+          <button (click)="cambiarPagina(-4)" class="btn btn-secondary">Anterior</button>
+          &nbsp;
+          <button (click)="cambiarPagina(4)" class="btn btn-secondary">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <h4 class="card-title"><span class="lstick"></span>Analisis de Citas por Mes Seleccione:</h4>
+                    </div>
+                    <!-- <div *ngIf="errodos">
+                        <h4 class="card-title"><span class="lstick"></span>{{ errodos }}</h4>
+                    </div>
+                    <div *ngIf="!errodos">
+                        <h4 class="card-title"><span class="lstick"></span>Analisis de Citas por mes</h4>
+                    </div> -->
+                    <div class="ml-auto">
+                        <div class="form-group row">
+                            <!-- Seleccione Año_Mes -->
+                            <label for="example-month-input" class="col-sm-4 col-form-label">Seleccione Año Mes*</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="month" id="example-month-input"
+                                    
+                                    (change)="anomes($event)">
+                            </div>
+                            <!-- [value]="mesyear" -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <!-- <h4 class="card-title"><span class="lstick"></span>Tratamiento realizados por fecha </h4> -->
+                    </div>
+                </div>
+
+                <!-- <div *ngIf="tratamientos.length > 0"> -->
+                <div>
+                    <canvas id="barCanvas"></canvas>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive m-t-20 no-wrap">
+                    <table class="table vm no-th-brd pro-of-month">
+                        <thead>
+                            <tr>
+                                <!-- <th colspan="2">Assigned</th> -->
+                                <th>Mes</th>
+                                <th>Cantidad Total</th>
+                                <!-- <th>Fecha</th>
+                                <th>Monto</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let dato of dato_listado">
+                                <td>
+                                    <h6>{{ dato.mes }}</h6>
+                                </td>
+                                <td>{{ dato.frecuencia }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

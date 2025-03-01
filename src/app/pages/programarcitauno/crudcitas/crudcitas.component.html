@@ -1,0 +1,96 @@
+<h2>Formulario Crear Primera Cita </h2>
+
+<!-- <form (ngSubmit)="guardarPaciente()" #formularioPaciente="ngForm"> -->
+<form [formGroup]="citaForm" (submit)="guardarCita()">
+ 
+  <input class="form-control" list="datalistOptionsdos" id="exampleDataListdos" 
+      placeholder="Motivo..." formControlName="motivo">
+  <datalist id="datalistOptionsdos">
+      <option *ngFor="let persona of tratamientos" [value]="persona.name_treatment">
+  </datalist>
+
+  <div class="row">
+    <!-- Columna izquierda para el paciente -->
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="nombre">Paciente:</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="ti-user cursor" (click)="abrilModalPaciente()">++añadir</i></div>
+            <select class="form-control custom-select"
+                formControlName="person_id"
+            >
+                <option value="">Seleccione Un Paciente</option>
+                <option *ngFor="let pacientess of paciente"
+                    [value]="pacientess.person.id">
+                    {{ pacientess.person.name }}
+                </option>
+            </select>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Columna derecha para el dentista -->
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="nombre">Dentista:</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="ti-user"></i></div>
+          <select class="form-control custom-select"
+                formControlName="dentista_id"
+            >
+              <option value="">Seleccione Un odontologo@</option>
+              <option *ngFor="let dentistass of dentista"
+                  [value]="dentistass.id">
+                  {{ dentistass.name }} {{ dentistass.last_name  }}
+              </option>
+              <!-- AQUI COMENTE 14/04/2024  -->
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Columna izquierda para la hora final -->
+    <div class="col-md-4 text-center">
+      <div class="form-group">
+        <label for="email">Fecha:</label>
+        <input type="date" formControlName="fecha" class="form-control" placeholder="dd/mm/yyyy">
+      </div>
+    </div>
+  
+    <!-- Columna central para la hora de inicio -->
+    <div class="col-md-4 text-center">
+      <div class="form-group">
+        <label for="fechaHora">Hora Inicio</label>
+        <input type="time" id="fechaHora" formControlName="hora_inicio" class="form-control">
+      </div>
+    </div>
+  
+    <!-- Columna derecha para la fecha -->
+    <div class="col-md-4 text-center">
+      <div class="form-group">
+        <label for="fechaHora">Hora Final</label>
+        <input type="time" id="fechaHora" formControlName="hora_final" class="form-control" >
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center"> <!-- Contenedor flex para alinear los botones horizontalmente -->
+    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Guardar</button>
+    <button type="button" class="btn btn-danger waves-effect waves-light m-r-10" *ngIf="citaSeleccionada !== 0" (click)="cargarParaBorraCita()">Borrar</button> <!-- Botón Borrar con color rojo, mostrado solo si citaSeleccionada no es undefined -->
+    <button type="button" class="btn btn-inverse waves-effect waves-light" (click)="cancelar()">Cancelar</button>
+  </div>
+</form>
+<!-- <div>{{ fechaHoraSeleccionada | json }}</div> -->
+<!-- <button type="button" class="btn waves-effect waves-light btn-block btn-danger">Danger</button> -->
+
+
+<div class="overlay" *ngIf="abrilModal">
+  <div class="form-container">
+    <app-pacienteuser
+    (cerrarModalPaciente)="cerrarModalPaciente()"
+    (cancelarModalPaciente)="cancelarModalPaciente()"
+    >
+    </app-pacienteuser>
+  </div>
+</div>

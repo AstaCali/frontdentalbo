@@ -1,0 +1,19 @@
+<!-- <p>chatbot works!</p> -->
+
+<div class="chat-container">
+  <div class="chat-title">
+    <p>CLINICA DENTALBO</p>
+  </div>
+  <!-- <div class="messages"> -->
+  <div class="messages" #messageContainer>
+    <div *ngFor="let message of chatHistory" class="message" [ngClass]="{'user-message': message.role === 'user', 'assistant-message': message.role === 'assistant'}">
+      <div *ngIf="message.role === 'user'" class="user"> {{ message.content }}</div><!--Usuario:-*LO QUE ENVIA EL PACIENTE--->
+      <div *ngIf="message.role === 'assistant'" class="assistant"> {{ message.content }}</div><!--Asistente:-RESPONDE EL CHATBOT-*-->
+    </div>
+  </div>
+  <div class="input-container">
+    <textarea [(ngModel)]="message" (keyup.enter)="sendMessages()" placeholder="Escribe tu mensaje aquí..." rows="1"></textarea>
+    <!-- <input type="text" [(ngModel)]="message" (keyup.enter)="sendMessages()" placeholder="Escribe tu mensaje aquí..." /> -->
+    <button (click)="sendMessages()">Enviar</button>
+  </div>
+</div>

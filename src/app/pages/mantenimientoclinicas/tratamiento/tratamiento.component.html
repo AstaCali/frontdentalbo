@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input type="text"
+                        class="form-control"
+                        placeholder="Buscar Tratamientos.."
+                        (keyup)="cargarTratamiento( txtTermino.value )"
+                        #txtTermino
+                />
+                
+
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <!-- <h4 class="card-title">Tratamiento ({{ tratamientos.length }})</h4>  -->
+                        <h4 class="card-title">Tratamiento ({{ totalTratamiento}}) - {{ desde }}</h4> 
+                        <h6 class="card-subtitle">
+                            Tratamientos registrados en el Sistema
+                        </h6>
+                    </div>
+
+                    <div class="col">
+                        <div class="text-right">
+                            <a class="btn btn-primary"
+                                routerLink="/dashboard/tratamiento/nuevo">
+                                <i class="fa fa-hospital-o"></i> 
+                                Crear Tratamiento
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Tratamiento</th>
+                                <th>Precio</th>
+                                <th>Descuento</th>
+                                <th>Estado</th>
+                                <th class="text-nowrap">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let tratamiento of tratamientos">                               
+                                <td>{{ tratamiento.name_treatment }}</td>
+                                <td>{{ tratamiento.price }}</td>
+                                <td>{{ tratamiento.discount }}</td>
+                                <!-- <td>
+                                    <div class="label label-table cursor " [class.label-success]="tratamiento.state === true" [class.label-danger]="tratamiento.state === false">
+                                      {{ tratamiento.state ? 'Activo' : 'Inactivo' }}
+                                    </div>
+                                </td> -->
+                                <td>
+                                    <select class="form-control"
+                                        [(ngModel)]="tratamiento.state"
+                                        (change)="cambiarStado(tratamiento)"
+                                        [ngClass]="tratamiento.state ? 'activo' : 'inactivo'"
+                                    >
+                                        <option [ngValue]="true">activo</option>
+                                        <option [ngValue]="false">inactivo</option>
+                                    </select>
+                                </td>
+                                <td class="text-nowrap">
+                                    <a [routerLink]="['/dashboard','tratamiento', tratamiento.id ]" 
+                                        data-toggle="tooltip" 
+                                        data-original-title="Editar">
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                    </a>
+                                    <a class="cursor"
+                                        data-toggle="tooltip"
+                                        data-original-title="Borrar"
+                                        (click)="borrarTratamiento(tratamiento)"> 
+                                        <i class="fa fa-close text-danger"></i> 
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button (click)="cambiarPagina(-6)" class="btn btn-secondary">Anterior</button>
+                &nbsp;
+                <button (click)="cambiarPagina(6)" class="btn btn-secondary">Siguiente</button>
+            </div>
+        </div>
+    </div>
+</div>

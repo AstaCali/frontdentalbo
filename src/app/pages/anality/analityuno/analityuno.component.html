@@ -1,0 +1,175 @@
+<!-- <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <h4 class="card-title"><span class="lstick"></span>Tratamiento por Epoca del Año</h4>
+                    </div>
+                    <div class="ml-auto">
+                        <div class="form-group row">
+                            <div id="example23_filter" class="dataTables_filter">
+                                <label><i class="fa fa-close text-danger" (click)="eliminarTreatment()"></i>
+                                  <input type="search" class="" placeholder="Busca Tratamiento" aria-controls="example23"
+                                    list="datalistOptionsTratamiento"
+                                    id="exampleDataListTratamiento"
+                                    (input)="onInputTreatment($event)"
+                                  >
+                                </label>
+                                <datalist id="datalistOptionsTratamiento">
+                                    <option *ngFor="let treatment of tratamientoArray" [value]="treatment.name_treatment">                            </datalist>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            
+                            <label for="example-month-input" class="col-sm-2 col-form-label">Fecha Inicio</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="date" id="example-month-input"
+                                   
+                                    (change)="cambiarFehaInicio($event)">
+                            </div>
+                    
+                           
+                            <label for="example-date-input" class="col-sm-2 col-form-label">Fecha Final</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="date" id="example-date-input"
+                                    
+                                    (change)="cambiarFechaFinal($event)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h4 class="card-title"><span class="lstick"></span>Tratamiento por Epoca del Año Seleccione:</h4>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <!-- Búsqueda de tratamiento -->
+            <!-- <div class="col-md-4">
+              <div class="form-group">
+                <label><i class="fa fa-close text-danger" (click)="eliminarTreatment()"></i>Buscador*</label>
+                <input type="search" class="form-control" placeholder="Busca Tratamiento" aria-controls="example23"
+                  list="datalistOptionsTratamiento" id="exampleDataListTratamiento" (input)="onInputTreatment($event)"
+                >
+                <datalist id="datalistOptionsTratamiento">
+                    <option *ngFor="let treatment of tratamientoArray" [value]="treatment.name_treatment"></option>
+                </datalist>
+              </div>
+            </div> -->
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <!-- Etiqueta con el ícono y el texto "Buscador*" -->
+                    <label for="exampleDataListTratamiento">
+                        <i class="fa fa-close text-danger mr-2" (click)="eliminarTreatment()"></i> Buscador*
+                    </label>
+                    
+                    <!-- Campo de búsqueda -->
+                    <input type="search" class="form-control" placeholder="Busca Tratamiento" aria-controls="example23"
+                        list="datalistOptionsTratamiento" id="exampleDataListTratamiento" (input)="onInputTreatment($event)">
+                    
+                    <!-- Datalist para opciones de búsqueda -->
+                    <datalist id="datalistOptionsTratamiento">
+                        <option *ngFor="let treatment of tratamientoArray" [value]="treatment.name_treatment"></option>
+                    </datalist>
+                </div>
+            </div>
+
+            <!-- <div class="col-md-4">
+                <label for="example-month-input" class="col-form-label">Busacador</label>
+                <div class="form-group d-flex align-items-center">
+                  <i class="fa fa-close text-danger mr-2" (click)="eliminarTreatment()"></i>
+                  <input type="search" class="form-control" placeholder="Busca Tratamiento" aria-controls="example23"
+                    list="datalistOptionsTratamiento" id="exampleDataListTratamiento" (input)="onInputTreatment($event)">
+                  <datalist id="datalistOptionsTratamiento">
+                    <option *ngFor="let treatment of tratamientoArray" [value]="treatment.name_treatment"></option>
+                  </datalist>
+                </div>
+            </div> -->
+  
+            <!-- Fecha de inicio -->
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="example-month-input" class="col-form-label">Fecha Inicio*</label>
+                <input class="form-control" type="date" id="example-month-input" (change)="cambiarFehaInicio($event)">
+              </div>
+            </div>
+  
+            <!-- Fecha final -->
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="example-date-input" class="col-form-label">Fecha Final*</label>
+                <input class="form-control" type="date" id="example-date-input" (change)="cambiarFechaFinal($event)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <!-- <h4 class="card-title"><span class="lstick"></span>Tratamiento realizados por fecha </h4> -->
+                    </div>
+                </div>
+
+                <!-- <div *ngIf="tratamientos.length > 0"> -->
+                <div>
+                    <div style="display: block; width: 100%;">
+                        <canvas
+                            id="lineChart"
+                        >
+                        </canvas>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-body">
+              <div class="table-responsive m-t-20 no-wrap">
+                  <table class="table vm no-th-brd pro-of-month">
+                      <thead>
+                          <tr>
+                              <!-- <th colspan="2">Assigned</th> -->
+                              <th>Fecha</th>
+                              <th>Cantidad Total</th>
+                              <!-- <th>Fecha</th>
+                              <th>Monto</th> -->
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let dato of dato_listado">
+                              <td>
+                                  <h6>{{ dato.fecha }}</h6>
+                              </td>
+                              <td>{{ dato.frecuencia }}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

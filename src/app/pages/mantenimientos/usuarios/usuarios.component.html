@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input type="text"
+                        class="form-control"
+                        placeholder="Buscar Usuario.."
+                        (keyup)="cargarUsuarios( txtTermino.value )"
+                        #txtTermino
+                />
+                
+
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Usuario ({{ totalUsuario }}) - {{ desde }}</h4> 
+                        <!-- <h4 class="card-title">Usuario ({{ usuarios.length }})</h4> -->
+                        <h6 class="card-subtitle">
+                            Usuario registrados en mi aplicación
+                        </h6>
+                    </div>
+
+                    <div class="col">
+                        <div class="text-right">
+                            <a class="btn btn-primary"
+                                routerLink="/dashboard/usuario/nuevo">
+                                <i class="fa fa-hospital-o"></i> 
+                                Crear Usuarios
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- <h4 class="card-title">Usuarios</h4> -->
+                <!-- <h6 class="card-subtitle">Add<code>.table-striped</code>for borders on all sides of the table and cells.</h6> -->
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Nombre Completo</th>
+                                <!-- <th>Nombre</th>
+                                <th>Apellido</th> -->
+                                <th>CI</th>
+                                <th>Celular</th>
+                                <th>Genero</th>
+                                <th class="text-nowrap">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuarios of usuario">
+                                <td>{{ usuarios.email }}</td>
+                                <td>{{ usuarios.role.name }}</td>
+                                <td>{{ usuarios.person.name }} {{ usuarios.person.last_name }}</td>
+                                <!-- <td>{{ usuarios.person.last_name }}</td> -->
+                                <td>{{ usuarios.person.ci }}</td>
+                                <td>{{ usuarios.person.celular }}</td>
+                                <td>{{ usuarios.person.gender }}</td>
+                                <!-- <td>{{ usuario.nombre }}</td> -->
+                                <!-- <td>
+                                    <div class="progress progress-xs margin-vertical-10 ">
+                                        <div class="progress-bar bg-danger" style="width: 35% ;height:6px;"></div>
+                                    </div>
+                                </td> -->
+                                <td class="text-nowrap">
+                                    <a [routerLink]="['/dashboard','usuario', usuarios.id ]" 
+                                        data-toggle="tooltip" 
+                                        data-original-title="Editar">
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                    </a>
+                                    <a class="cursor"
+                                        data-toggle="tooltip"
+                                        data-original-title="Borrar"
+                                        (click)="borrarUsuario(usuarios)"> 
+                                        <i class="fa fa-close text-danger"></i> 
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button (click)="cambiarPagina(-7)" class="btn btn-secondary">Anterior</button>
+                &nbsp;
+                <button (click)="cambiarPagina(7)" class="btn btn-secondary">Siguiente</button>
+            </div>
+        </div>
+    </div>
+</div>

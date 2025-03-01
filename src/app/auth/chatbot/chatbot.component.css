@@ -1,0 +1,122 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+  }
+  
+  .message {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .user-message {
+    justify-content: flex-end;
+  }
+  
+  .assistant-message {
+    justify-content: flex-start;
+  }
+  
+  .user {
+    background-color: #0078fe;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+  }
+  
+  .assistant {
+    background-color: #e5e5ea;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+  }
+  
+  /* .input-container {
+    display: flex;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-right: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #0078fe;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #005bb5;
+  } */
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .input-container textarea {
+    flex: 1;
+    resize: none; /* Evita que el textarea se pueda redimensionar manualmente */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px; /* Tamaño de fuente */
+    min-height: 60px; /* Altura mínima */
+    max-height: 200px; /* Altura máxima */
+    overflow-y: auto; /* Scroll vertical si se excede la altura máxima */
+    margin-right: 10px;
+  }
+  
+  .input-container button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #0078fe;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .input-container button:hover {
+    background-color: #005bb5;
+  }
+
+  
+/* TITULO */
+.chat-title {
+  background-color: #005bb5; /* Color de fondo del título */
+  color: #ffffff; /* Color del texto */
+  padding: 10px; /* Espaciado interior */
+  text-align: center; /* Centrar el texto */
+}
+
+.chat-title p {
+  margin: 0; /* Eliminar el margen predeterminado del título */
+}

@@ -1,0 +1,25 @@
+<!-- <p>renamepass works!</p> -->
+<form
+    [formGroup]="renewPassworForm"
+    (ngSubmit)="guardarNewPass()"
+>
+    <div class="mb-3">
+      <label class="form-label">Al cambiar su ConTra seña Vuelva a iniciar sesion</label>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Contraseña actual</label>
+        <input type="password" class="form-control" placeholder="Ingrese.."
+        formControlName="currentPassword">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword2" class="form-label">Nueva Contraseña</label>
+        <input type="password" class="form-control" placeholder="New Password"
+        formControlName="newPassword">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword3" class="form-label">Confirma Contraseña</label>
+        <input type="password" class="form-control" placeholder="Confirmar Password"
+        formControlName="confirmPassword">
+    </div>
+    <button type="submit" class="btn btn-primary">reiniciar</button>
+</form>

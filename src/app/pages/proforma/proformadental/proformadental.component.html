@@ -1,0 +1,253 @@
+<!--###-NODAL DE ABRIL PARA CREAR-EDITAR_COTIZACION-##-->
+
+<div class="overlay" *ngIf="abrilModalcrear">
+    <div class="form-container">
+      <app-crearproforma
+      (cancelarFormulario)="cancelarFormulario()"
+      (cerrarFormulario)="cerrarFormulario()"
+      [idSeleccionado]="personaID"
+      (enviarDatos)="manejarDatosRecibidos($event)"
+      ></app-crearproforma>
+    </div>
+</div>
+<!--###-HASTA AQUI -##-->
+<!--###-NODAL DE ABRIL PARA CREAR-EDITAR_DETALLE_PROFORMA -##-->
+<div class="overlay" *ngIf="abrilModalcrearDetall">
+    <div class="form-container">
+      <app-creardetalleproforma
+      (cancelarFormularioDetall)="cancelarFormularioDetall()"
+      (cerrarFormularioDetall)="cerrarFormularioDetall()"
+      [selectedIDcotizacion]="selectedIDcotizacion"
+      [selectedIDcotizacionDetalle]="selectedIDcotizacionDetalle"
+      ></app-creardetalleproforma>
+    </div>
+</div>
+<!--###-HASTA AQUI -##-->
+<!--###-MODAL DE ABRIR PARA CREAR-PAGOS-EDITAR_DE_DETALLE_PROFORMA -##-->
+<div class="overlay" *ngIf="abrilModalPagos">
+    <div class="form-container">
+      <app-pagosdetalleprofrm
+      (cancelarPago)="cancelarPago()"
+      (cerrarPago)="cerrarPago()"
+      [selectedIDPagoMosTrar]="selectedIDPagoMosTrar"
+      [selectedIDPagoPut]="selectedIDPagoPut"
+      ></app-pagosdetalleprofrm>
+    </div>
+</div>
+<!--###-HASTA AQUI -##-->
+
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                
+                <input type="text"
+                        class="form-control"
+                        placeholder="2Buscar usuario..."/>
+
+            </div>
+        </div>
+    </div>
+    <!--####################-->
+</div> 
+
+<div class="row animated fadeIn fast">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">COTIZACIONES</h4>
+                <div class="row button-group">
+                    <div class="col-md-6" *ngIf="idroleName !== 'PACIENTE'">
+                        <!-- Columna izquierda -->
+                        <button type="button" class="btn waves-effect btn-warning"
+                                (click)="abrirModalDetalle()">+ Adicionar Tratamiento
+                        </button>
+                    </div>
+                    <div class="col-md-6 text-right mt-1" *ngIf="idroleName !== 'PACIENTE'">
+                        <button type="button" class="btn waves-effect btn-info"
+                            (click)="abrirModal()">Nueva Cotización
+                        </button>
+
+                        <!-- Aquí puedes agregar más botones si lo deseas -->
+                        <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!--######-->
+        <div class="card">
+            <div class="card-body scrollable-content">
+                <div class="btn-toolbar pull-right" role="toolbar" aria-label="Toolbar with button groups">
+                    <div *ngFor="let item of itemsToShow; let i = index" class="btn-group mr-2" role="group" aria-label="First group">
+                        <button type="button" class="btn" [ngClass]="{'btn-secondary': selected !== i + startIndex, 'btn-info': selected === i + startIndex}" (click)="handleClick(i + startIndex)">
+                            {{i + startIndex + 1}}
+                        </button>
+                    </div>
+                    <button type="button" class="btn btn-primary" *ngIf="startIndex > 0" (click)="previous()"><i class="fa fa-fast-backward"></i></button>
+                    <button type="button" class="btn btn-primary" *ngIf="(startIndex + 3) < items.length" (click)="next()"><i class="fa fa-fast-forward"></i></button>
+                </div>
+
+                <h4 class="card-title">Products Availability</h4>
+                <!-- <h5 class="card-title">{{ selected >= 0 ? itemsToShow[selected].name : '' }}</h5> -->
+                <h5 class="card-title">{{selectedItemTitulo }}</h5>
+                <h6 class="card-subtitle d-flex justify-content-between align-items-end">
+                    <span>{{selectedItemFecha}}</span>
+                    <!-- Iconos -->
+                    <span>
+                      <i class="mdi mdi-fax ml-2 avatar cursor" (click)="onImprimir()"></i> <!-- Icono de imprimir -->
+                      <i class="mdi mdi-lead-pencil ml-2" *ngIf="idroleName !== 'PACIENTE'"></i> 
+                      <i class="mdi mdi-delete ml-2" *ngIf="idroleName !== 'PACIENTE'"></i>                   
+                    </span>
+                </h6>
+                <div class="table-responsive">
+                    <!-- <div class="table-responsive overflow-auto" style="max-height: 400px;"> -->
+                    <table class="table stylish-table">
+                        <thead>
+                            <tr>
+                                <th style="width:90px;">Product</th>
+                                <th>Tratamiento</th>
+                                <th>Diente</th>
+                                <th>Precio</th>
+                                <th>Fecha</th>
+                                <th>PAGOS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let detallproformas of detallproform">
+                                <!-- <td><span class="round"><i class="ti-shopping-cart"></i></span></td> -->
+                                <td>
+                                    <div *ngIf="idroleName !== 'PACIENTE'" style="display: flex; align-items: center;">
+                                        <!-- Icono de carrito de compras -->
+                                        <span style="margin-right: 10px;" (click)="editarDetalle(detallproformas.id)">
+                                            <!-- <i class="ti-shopping-cart">EDITAR</i> -->
+                                            <i class="fa fa-pencil text-inverse m-r-10 avatar cursor"></i>
+                                            
+                                        </span>
+                                        
+                                        <!-- Icono de editar -->
+                                        <span style="margin-right: 10px;"(click)="borrarDetalleCotizacion(detallproformas)" >
+                                            <i class="fa fa-close text-danger avatar cursor"></i>
+                                        </span>
+                                        <span style="margin-right: 10px;">
+                                            <i class="ti-money" [ngClass]="{'green-icon': detallproformas.pagocotizacion?.monto === detallproformas.discounted_price, 'red-icon': detallproformas.pagocotizacion?.monto !== detallproformas.discounted_price}"></i>
+                                        </span>
+                                        <!-- <span style="margin-right: 10px;" *ngFor="let pago of detallproformas.pagocotizacion">
+                                            <i class="ti-money" [ngClass]="{
+                                                    'green-icon': pago.monto === detallproformas.discounted_price, 
+                                                    'red-icon': pago.monto !== detallproformas.discounted_price
+                                                }">
+                                            </i>
+                                        </span> -->
+                                        <span class="round" style="margin-right: 10px; width: 20px; height: 20px; line-height: 20px;">
+                                            <!-- <i class="ti ti-dollar ti-xs" style="font-size: 14px;"></i> -->
+                                        </span>
+                                        
+                                        <!-- <span class="round ti-xs" style="margin-right: 10px;"><i class="ti-money"></i></span> -->
+                                    </div>
+                                    <div *ngIf="idroleName === 'PACIENTE'" style="display: flex; align-items: center;">
+                                        <span style="margin-right: 5px;">
+                                            <i class="ti-money" [ngClass]="{'green-icon': detallproformas.pagocotizacion?.monto === detallproformas.discounted_price, 'red-icon': detallproformas.pagocotizacion?.monto !== detallproformas.discounted_price}"></i>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h6><a href="javascript:void(0)" class="link">{{ detallproformas.name_treatment }}</a></h6>
+                                    <!-- <small class="text-muted">Product id : MI5457 </small> -->
+                                </td>
+                                <td>
+                                    <h5>{{ detallproformas.diente }}</h5>
+                                </td>
+                                <td>
+                                    <h5>{{ detallproformas.discounted_price }}</h5>
+                                </td>
+                                <td style="border-right: 1px solid #ccc;">
+                                    <!-- <h5>{{ detallproformas.fecha }}</h5> -->
+                                    <h5>{{ detallproformas.fecha | date:'MMM. dd, yyyy' }}</h5>
+                                </td>
+                                <td style="border-right: 1px solid #ccc;">
+                                    <div *ngIf="detallproformas?.pagocotizacion?.length > 0">
+                                        <div *ngFor="let pago of detallproformas.pagocotizacion" style="display: flex; align-items: center; margin-bottom: 5px;">
+                                            <!-- Fecha de Pago -->
+                                            <span style="margin-right: 10px;">
+                                                {{ pago.fecha_pago | date:'MMM. dd, yyyy' }}
+                                            </span>
+                                            <!-- Monto -->
+                                            <span style="margin-right: 10px; font-weight: bold;">{{ pago.monto }}Bs-</span>
+                                            <!-- Tipo de Pago -->
+                                            <span style="margin-right: 10px; font-weight: bold;">{{ pago.tipo_pago }}</span>
+                                            <!-- Iconos de edición y eliminación -->
+                                            <span *ngIf="idroleName !== 'PACIENTE'" style="margin-right: 10px;" (click)="editarPago(pago.id)">
+                                                <i class="ti-pencil cursor"></i>
+                                            </span>
+                                            <span *ngIf="idroleName !== 'PACIENTE'" (click)="deletePago(pago)">
+                                                <i class="ti-close cursor"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="detallproformas?.pagocotizacion?.length === 0">
+                                        <span>Sin pagos</span>
+                                    </div>
+                                    <hr>
+                                    <div *ngIf="idroleName !== 'PACIENTE'" style="margin-top: 10px; display: flex; align-items: center; justify-content: flex-end;">
+                                        <small class="text-muted" style="margin-right: 5px;">ADICIONAR PAGO</small>
+                                        <button class="btn btn-sm btn-primary" (click)="abrirModalPago(detallproformas.id)">
+                                            <i class="ti-plus"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                </div>
+                <div class="text-center mt-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p>Total = {{ totalDiscountedPrice }} Bs</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>A cuenta = {{ totalMonto }} Bs</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Saldo = {{ totalSaldo }} Bs</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-6" *ngIf="idroleName !== 'PACIENTE'">
+                    <!-- Columna izquierda -->
+                    <button type="button" class="btn waves-effect btn-warning"
+                            (click)="abrirModalDetalle()">+ Adicionar Tratamiento
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!---(#####)-->
+    </div>
+    <!--#-PERFIL-#-->
+    <div class="col-md-2">
+        <div class="card">
+            <div *ngIf="perfil" class="card-body m-t-30" style="text-align: center; height: 610px;">
+                
+                    <img src="../assets/images/perfilVaciocuatro.jpg" class="img-circle" width="100">
+                    <h4 class="card-title m-t-10">{{ perfil.name }} {{ perfil.last_name }}</h4>
+                    <h6 class="card-subtitle">{{ perfil.celular }}</h6>
+                    <hr>
+                    <!-- <div class="row text-center justify-content-md-center">
+                        <div class="col-4"><a href="javascript:void(0)" class="link">
+                            <i class="icon-people"></i> <font class="font-medium">254</font></a>
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <div class="col-4"><a href="javascript:void(0)" class="link">
+                            <i class="icon-picture"></i> <font class="font-medium">54</font></a>
+                        </div>
+                    </div> -->
+                
+            </div>
+            <!-- <div>
+                <hr> </div> -->
+        </div>
+    </div>
+</div>
+  

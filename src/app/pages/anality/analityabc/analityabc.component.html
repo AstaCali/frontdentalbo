@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <h4 class="card-title"><span class="lstick"></span>Analisis ABC</h4>
+                    </div>
+                </div>
+                <!-- <div>
+                    <div style="display: block; width: 100%;">
+                      <canvas baseChart
+                              [datasets]="barChartData"
+                              [labels]="barChartLabels"
+                              [options]="barChartOptions"
+                              [type]="barChartType"
+                              [legend]="barChartLegend"
+                              style="min-height: 300px;">
+                      </canvas>
+                    </div>
+                </div> -->
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-chart-host chartType="bubble"> -->
+<!-- <canvas
+      baseChart
+      [data]="bubbleChartData"
+      [options]="bubbleChartOptions"
+      [legend]="true"
+      [type]="bubbleChartType"
+    >
+</canvas> -->
+<!-- <canvas
+    #bubbleChartCanvas
+    id="myBubbleChart"
+    baseChart
+    [data]="bubbleChartData"
+    [options]="bubbleChartOptions"
+    [legend]="true"
+    [type]="bubbleChartType"
+></canvas> -->
+
+<!-- </app-chart-host> -->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <!-- <h4 class="card-title"><span class="lstick"></span>Tratamiento realizados por fecha </h4> -->
+                    </div>
+                </div>
+
+                <!-- <div *ngIf="tratamientos.length > 0"> -->
+                <div>
+                    <div style="display: block; width: 100%;" chartType="bubble">
+                        <!-- <app-chart-host chartType="bubble">
+                            <canvas
+                            baseChart
+                            [data]="bubbleChartData"
+                            [options]="bubbleChartOptions"
+                            [legend]="true"
+                            [type]="bubbleChartType"
+                            >
+                            </canvas>
+                        </app-chart-host> -->
+                        <canvas
+                            baseChart
+                            [data]="bubbleChartData"
+                            [options]="bubbleChartOptions"
+                            [legend]="true"
+                            [type]="bubbleChartType"
+                        >
+                        </canvas>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+  
+

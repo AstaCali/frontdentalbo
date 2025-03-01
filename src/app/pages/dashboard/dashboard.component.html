@@ -1,0 +1,168 @@
+<!-- <p>dashboard works PRINCIPAL!</p> -->
+<div class="row">
+    <div class="col-lg-3">
+        <div class="card bg-info">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/staff-w.png" alt="Income"></div>
+                    <!-- <div class="m-r-20 align-self-center"><img src="../assets/images/icon/income-w.png" alt="Income"></div> -->
+                    <div class="align-self-center">
+                        <h6 class="text-white m-t-10 m-b-0">Odontologos</h6>
+                        <h2 class="m-t-0 text-white">4</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card bg-success">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/expense-w.png" alt="Income"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-white m-t-10 m-b-0">Tratamiento Atendido</h6>
+                        <h2 class="m-t-0 text-white">30</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card bg-primary">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/staff-w.png" alt="Income"></div>
+                    <!-- <div class="m-r-20 align-self-center"><img src="../assets/images/icon/assets-w.png" alt="Income"></div> -->
+                    <div class="align-self-center">
+                        <h6 class="text-white m-t-10 m-b-0">Total de Cliente</h6>
+                        <h2 class="m-t-0 text-white">20</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card bg-danger">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/staff-w.png" alt="Income"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-white m-t-10 m-b-0">Total de Reserva</h6>
+                        <h2 class="m-t-0 text-white">0</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-msjcitas></app-msjcitas> -->
+
+<!--  analisis de daTos CHART -->
+<!-- <div *ngIf="tratamientos.length > 0">
+    <h2>Tratamientos más demandados:</h2>
+      <canvas
+        baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [type]="barChartType"
+        [legend]="barChartLegend"
+      >
+      </canvas>
+  </div> -->
+<!--  HASTA AQUI--- -->
+<!--  analisis de daTos CHART -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <h4 class="card-title"><span class="lstick"></span>Tratamiento realizados por fecha </h4>
+                    </div>
+                </div>
+
+                <!-- <div *ngIf="tratamientos.length > 0"> -->
+                <div>
+                    <div style="display: block; width: 100%;">
+                      <canvas baseChart
+                              [datasets]="barChartData"
+                              [labels]="barChartLabels"
+                              [options]="barChartOptions"
+                              [type]="barChartType"
+                              [legend]="barChartLegend"
+                              style="min-height: 300px;">
+                      </canvas>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!--  HASTA AQUI--- -->
+<!--  lisTa de TRATAMIENTOS MAS REALISADOS -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <!-- <div>
+                        <h4 class="card-title"><span class="lstick"></span>Projects of the Month</h4>
+                    </div> -->
+                    <div *ngIf="errodos">
+                        <h4 class="card-title"><span class="lstick"></span>{{ errodos }}</h4>
+                    </div>
+                    <div *ngIf="!errodos">
+                        <h4 class="card-title"><span class="lstick"></span>Reporte por fecha o Mes</h4>
+                    </div>
+                    <div class="ml-auto">
+                        <div class="form-group row">
+                            <!-- Seleccione Año_Mes -->
+                            <label for="example-month-input" class="col-sm-2 col-form-label">Seleccione Año_Mes</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="month" id="example-month-input"
+                                    [value]="mesyear"
+                                    (change)="onDateChange($event)">
+                            </div>
+                    
+                            <!-- Fecha -->
+                            <label for="example-date-input" class="col-sm-2 col-form-label">Fecha</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="date" id="example-date-input"
+                                    [value]="dia"
+                                    (change)="cambiarFeha($event)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive m-t-20 no-wrap">
+                    <table class="table vm no-th-brd pro-of-month">
+                        <thead>
+                            <tr>
+                                <!-- <th colspan="2">Assigned</th> -->
+                                <th>Tratamiento</th>
+                                <th>Precio</th>
+                                <th>Fecha</th>
+                                <th>Monto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pago of pagosAnalisis">
+                                <td>
+                                    <h6>{{ pago.name_treatment }}</h6>
+                                </td>
+                                <td>{{ pago.price }}</td>
+                                <td>{{ pago.fecha_pago }}</td>
+                                <td>{{ pago.monto }}</td>
+                                <!-- <td style="width:50px;"><span class="round">S</span></td>
+                                <td>
+                                    <h6>Sunil Joshi</h6><small class="text-muted">Web Designer</small></td>
+                                <td>Elite Admin</td>
+                                <td><span class="label label-success label-rounded">Low</span></td>
+                                <td>$3.9K</td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  HASTA AQUI--- -->

@@ -1,0 +1,23 @@
+
+<div class="calendar-container">
+    <full-calendar
+    #calendar
+    [options]="calendarOptions"
+    (dateClick)="handleDateClick($event)"
+    ></full-calendar>
+</div>
+
+
+<div class="overlay" *ngIf="abrilModal && fechaHoraSeleccionada">
+    <div class="form-container">
+      <app-citas (closeForm)="closeForm()" [fechaHoraSeleccionada]="fechaHoraSeleccionada"
+      (cancelarFormulario)="cancelarFormulario()"
+      ></app-citas>
+    </div>
+</div>
+
+<div *ngIf="eventoSeleccionado">
+    <h3>Detalles del Evento</h3>
+    <p>Título: {{ eventoSeleccionado.title }}</p>
+    <p> Fecha de inicio: {{ eventoSeleccionado.start }}</p>
+</div>

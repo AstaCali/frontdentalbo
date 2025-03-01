@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h4 class="card-title"><span class="lstick"></span>Ingreso Por Tratamiento. Seleccione:</h4>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <!-- Búsqueda de tratamiento -->
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <!-- Etiqueta con el ícono y el texto "Buscador*" -->
+                    <label for="exampleDataListTratamientoSiete">
+                        <i class="fa fa-close text-danger mr-2" (click)="eliminarTreatment()"></i> Buscador*
+                    </label>
+                    
+                    <!-- Campo de búsqueda -->
+                    <input type="search" class="form-control" placeholder="Busca Tratamiento" aria-controls="example23"
+                        list="datalistOptionsTratamientoSiete" id="exampleDataListTratamientoSiete" (input)="onInputTreatment($event)">
+                    
+                    <!-- Datalist para opciones de búsqueda -->
+                    <datalist id="datalistOptionsTratamientoSiete">
+                        <option *ngFor="let treatment of tratamientoArray" [value]="treatment.name_treatment"></option>
+                    </datalist>
+                </div>
+            </div>
+  
+            <!-- Fecha de inicio -->
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="example-month-input" class="col-form-label">Fecha Inicio*</label>
+                <input class="form-control" type="date" id="example-month-input" (change)="cambiarFehaInicio($event)">
+              </div>
+            </div>
+  
+            <!-- Fecha final -->
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="example-date-input" class="col-form-label">Fecha Final*</label>
+                <input class="form-control" type="date" id="example-date-input" (change)="cambiarFechaFinal($event)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <!-- <h4 class="card-title"><span class="lstick"></span>Tratamiento realizados por fecha </h4> -->
+                    </div>
+                </div>
+
+                <!-- <div *ngIf="tratamientos.length > 0"> -->
+                <div>
+                    <div style="display: block; width: 100%;">
+                        <canvas
+                            id="lineChart"
+                        >
+                        </canvas>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

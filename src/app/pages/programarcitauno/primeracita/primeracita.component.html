@@ -1,0 +1,73 @@
+
+<!-- <div class="overlay" *ngIf="abrilModal && fechaHoraSeleccionada"> -->
+<div class="overlay" *ngIf="abrilModal">
+    <div class="form-container">
+      <app-crudcitas 
+      (closeForm)="closeForm()" 
+      [fechaHoraSeleccionada]="fechaHoraSeleccionada"
+      (cancelarFormulario)="cancelarFormularioCita()"
+      (cerrarFormularioCita)="cerrarFormularioCita()"
+      [citaSeleccionada]="selectedIDCita"
+      [idOdontologo]="selectedDentistaId"
+      ></app-crudcitas>
+      <!-- [citaSeleccionada]="citaId" -->
+      <!-- (listarFormulario)="listarFormulario()" -->
+    </div>
+</div>
+<!--#########-PARA PRACTICAR-######-->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card-body">
+                            <!-- <h4 class="card-title m-t-10">Drag &amp; Drop Event</h4> -->
+                            <h4 class="card-title m-t-10">Seleccione Odontologos</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div *ngFor="let dentistas of dentista; let i = index" class="checkbox m-t-20">
+                                        <input [id]="'checkbox-' + dentistas.id" 
+                                            type="checkbox"
+                                            [checked]="selectedDentistaId === dentistas.id"
+                                            (change)="onSelectDentista(dentistas.id)"
+                                            [disabled]="rol_usuario_dos === 'ODONTOLOGO'"
+                                        >
+
+                                        <label [for]="'checkbox-' + dentistas.id">
+                                            <i class="fa fa-circle" [ngClass]="getColor(i)"></i>
+                                            {{ dentistas.name }} {{ dentistas.last_name }}
+                                        </label>
+                                    </div>
+                                    <!-- <div class="checkbox m-t-20">
+                                        <input id="drop-remove" type="checkbox">
+                                        <label for="drop-remove"><i class="fa fa-circle text-info"></i>
+                                            Remove after drop
+                                        </label>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="card-body b-l calender-sidebar">
+                            <ng-container *ngIf="calendarVisible">
+                                <!-- <div class="calendar-container custom-calendar"> -->
+                                <div class="calendar-container custom-calendar">
+                                <!-- <div class="calendar-container"> -->
+                                    <full-calendar
+                                    #calendar
+                                    [options]="calendarOptions"
+                                    (dateClick)="enviarDatosFormulario($event)"
+                                    ></full-calendar>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

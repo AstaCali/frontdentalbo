@@ -1,0 +1,12 @@
+.custom-nav-link {
+    color: white !important;  /* Cambia el color del texto a blanco */
+    /* font-weight: bold;  Aumenta el grosor de la letra */
+    font-size: 1.1em;  /* Opcional: aumenta un poco el tamaño de la letra para mayor visibilidad */
+}
+
+/* Opcional: Si quieres que los elementos cambien de color cuando el usuario pasa el cursor sobre ellos */
+.nav-link.custom-nav-link:hover {
+    color: #685e5e !important;  /* Utiliza !important para asegurar que este estilo se aplique */
+}
+
+/*-------------------*/

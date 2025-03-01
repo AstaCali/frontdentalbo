@@ -1,0 +1,69 @@
+<!-- <p>pagosdetalleprofrm works!</p> -->
+  
+
+
+<!-- </div> -->
+
+<div id="addTreatmentModal" class="modal-dialog modal-lg" tabindex="-1" aria-labelledby="addTreatmentModalLabel">
+  <!-- <div class="modal-content"> -->
+    <div class="modal-header">
+      <h3 class="modal-title" id="addTreatmentModalLabel">{{titulo}}</h3>
+      <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
+    <div class="modal-body">
+      <!-- <hr> -->
+      <p><strong>Tratamiento: {{NameTratament}}</strong></p>
+      <div class="row price-info">
+        <div class="col-md-4">
+          <strong>Prec.Total:</strong>{{PriceTratament}}
+        </div>
+        <!-- <div class="col-md-4">
+          <strong>A Cuenta:</strong> 0 Bs
+        </div>
+        <div class="col-md-4">
+          <strong>Saldo:</strong> 390 Bs
+        </div> -->
+      </div>
+      <form
+      [formGroup]="pagosForm" 
+      (submit)="guardarPago()"
+      >
+        <!-- <div class="form-group">
+          <label for="payment-method">Método de Pago</label>
+          <div>
+            <input type="radio" formControlName="tipo_pago" value="Bs"> Bs
+            <input type="radio" formControlName="tipo_pago" value="Efectivo"> Efectivo
+            <input type="radio" formControlName="tipo_pago" value="Tarjeta"> Tarjeta
+            <input type="radio" formControlName="tipo_pago" value="Transferencia"> Transferencia
+          </div>
+        </div> -->
+        <div class="mb-3">
+          <label for="monto" class="form-label">Monto(Bs)</label>
+          <input type="number" class="form-control" formControlName="monto">
+          <!-- <input type="text" class="form-control" id="description" > -->
+        </div>
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripción(Opcional)</label>
+          <input type="text" class="form-control" formControlName="descripcion">  
+          <!-- <input type="number" class="form-control" id="discounted_price" formControlName="discounted_price">   -->
+        </div>
+        <div class="mb-2">
+          <label for="fecha_pago" class="form-label">Fecha</label>
+          <input type="date" class="form-control" formControlName="fecha_pago">
+          <!-- <input type="number" class="form-control" id="price_without_discount" formControlName="price_without_discount"> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-inverse" (click)="cancelar()">Cancelar</button>
+          <button type="submit" class="btn btn-info">Guardar</button>
+        </div>
+      </form>
+    </div>
+  <!-- </div> -->
+</div>
+
+
+
+
+  

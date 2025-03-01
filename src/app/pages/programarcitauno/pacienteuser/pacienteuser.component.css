@@ -1,0 +1,4 @@
+.modal-body {
+    max-height: 70vh; /* Ajusta la altura máxima de la modal */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+}

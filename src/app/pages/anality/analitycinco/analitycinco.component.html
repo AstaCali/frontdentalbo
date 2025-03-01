@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <h4 class="card-title"><span class="lstick"></span>Reporte de Citas canceladas. Seleccione:</h4>
+                    </div>
+                    <div class="ml-auto">
+                        <div class="form-group row">
+                            <!-- Seleccione Año_Mes -->
+                            <label for="example-month-input" class="col-sm-2 col-form-label">Fecha Inicio*</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="date" id="example-month-input"
+                                   
+                                    (change)="cambiarFehaInicio($event)">
+                            </div>
+                    
+                            <!-- Fecha -->
+                            <label for="example-date-input" class="col-sm-2 col-form-label">Fecha Final*</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="date" id="example-date-input"
+                                    
+                                    (change)="cambiarFechaFinal($event)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <!-- <h4 class="card-title"><span class="lstick"></span>Tratamiento realizados por fecha </h4> -->
+                    </div>
+                </div>
+
+                <!-- <div *ngIf="tratamientos.length > 0"> -->
+                <div>
+                    <!-- <div style="display: block; width: 100%;">
+                        <canvas
+                            id="lineChart"
+                        >
+                        </canvas>
+                    </div> -->
+                    <div style="display: block; width: 100%;">
+                        <canvas id="myPieChart"></canvas> <!-- Aquí se renderiza la gráfica -->
+                    </div>                      
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

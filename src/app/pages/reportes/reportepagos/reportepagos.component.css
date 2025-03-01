@@ -1,0 +1,37 @@
+.morado {
+    background-color: purple; /* Cambia el color de fondo a morado */
+    /*color: white; /* Opcional: cambiar el color del texto para mejor legibilidad */
+}
+
+/* PARA LOS BUTONES ANTES Y SIGUIENTE */
+.dataTables_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en líneas adicionales si es necesario */
+    margin-bottom: 20px; /* Puedes ajustar este margen según sea necesario */
+    padding: 10px; /* Agrega un poco de relleno para evitar que los elementos toquen los bordes del contenedor */
+  }
+  
+  .dataTables_info {
+    flex: 1;
+    text-align: center;
+    margin-bottom: 10px; /* Agrega margen inferior para separar del paginado en pantallas pequeñas */
+  }
+  
+  .dataTables_paginate {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Espacio entre los botones, ajusta según sea necesario */
+  }
+  
+  @media (max-width: 600px) {
+    .dataTables_wrapper {
+      flex-direction: column; /* Cambia la dirección del flujo a columna en pantallas pequeñas */
+      align-items: stretch; /* Asegura que los elementos se estiren para llenar el contenedor */
+    }
+  
+    .dataTables_paginate {
+      justify-content: center; /* Centra los botones de paginación en pantallas pequeñas */
+    }
+  }

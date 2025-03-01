@@ -1,0 +1,81 @@
+<!-- <div class="modal fade" id="addTreatmentModal" tabindex="-1" aria-labelledby="addTreatmentModalLabel" aria-hidden="true"> -->
+<div id="addTreatmentModal" tabindex="-1" aria-labelledby="addTreatmentModalLabel">
+  <h3>Adicionar Tratamiento</h3>  
+  <form
+      [formGroup]="proformaDetallForm" 
+      (submit)="guardarProformaDetall()"
+  >
+    <div class="modal-body">
+      <div class="mb-3">
+        <label for="treatment" class="form-label">Seleccione Tratamiento</label>
+        <ng-autocomplete 
+          #autocompleteInput
+          [data]="tratamientos"
+          [searchKeyword]="keyword"
+          (selected)='selectEvent($event)'
+          placeholder="Select country"
+          [itemTemplate]="itemTemplate"
+          [notFoundTemplate]="notFoundTemplate"
+          >                
+          <!-- formControlName="treatment_id"  AQUI NO USOF EStO PORQUE LO EStOYINSERTANDO CUANOD SELECCIONO   -->
+        </ng-autocomplete>
+
+        <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item.name_treatment"></a>
+        </ng-template>
+      
+        <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+        </ng-template>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Descripción(Obcional)</label>
+        <input type="text" class="form-control" id="description" >
+      </div>
+      <div class="mb-3 d-flex justify-content-between align-items-center">
+        <label for="treatment" class="form-label">Pieza Dentales</label>
+        <ng-autocomplete 
+          #dienteAutocompleteInput
+          [data]="dientes"
+          [searchKeyword]="keywords"
+          placeholder="Seleccione un diente"
+          (selected)="selectDienteEvent($event)"
+          [itemTemplate]="toothItemTemplate"
+          [notFoundTemplate]="toothNotFoundTemplate"
+          >
+          <!-- formControlName="diente_id"       AQUI NO USOF EStO PORQUE LO EStOYINSERTANDO CUANOD SELECCIONO          -->
+        </ng-autocomplete>
+      
+        <ng-template #toothItemTemplate let-item>
+          <a [innerHTML]="item.number_tooth"></a>
+        </ng-template>
+        
+        <ng-template #toothNotFoundTemplate let-notFound>
+          <div [innerHTML]="notFound"></div>
+        </ng-template>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Precio (Bs)</label>
+        <input type="number" class="form-control" id="discounted_price" formControlName="discounted_price">
+        <!-- <input type="number" class="form-control" id="price" formControlName="price"> -->
+
+      </div>
+      <!-- <input type="number" class="form-control" id="price"> -->
+      <div class="mb-3">
+        <label for="discount" class="form-label">Descuento (%)</label>
+        <input type="number" class="form-control" id="price_without_discount" formControlName="price_without_discount">
+      </div>
+      <div class="mb-3">
+        <label for="doctor" class="form-label">Médico Comisionista(Obcional)</label>
+        <input type="text" class="form-control" id="doctor">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <!-- <button type="button" class="btn btn-success" (click)="cancelar()">Cancelar</button> color Verde-->
+      <button type="submit" class="btn btn-info">Guardar</button>
+      <button type="button" class="btn btn-inverse" (click)="cancelar()">Cancelar</button>
+      <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button> -->
+      <!-- <button type="submit" class="btn btn-success" [disabled]="treatmentForm.invalid">Guardar</button> -->
+    </div>
+  </form>
+</div>

@@ -1,0 +1,116 @@
+<!-- <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <h4 class="card-title"><span class="lstick"></span>Reporte de Citas por Dentista</h4>
+                    </div>
+                    <div class="ml-auto">
+                        <div class="form-group row">
+                           
+                            <label for="example-month-input" class="col-sm-6 col-form-label">Fecha Inicio*</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="date" id="example-month-input"
+                                   
+                                    (change)="cambiarFehaInicio($event)">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <!-- Título del reporte -->
+                <div>
+                    <h4 class="card-title"><span class="lstick"></span>Reporte de Citas por Dentista</h4>
+                </div>
+
+                <!-- Contenedor d-flex para alinear el label y el input en una fila -->
+                <div class="form-group row d-flex align-items-center">
+                    <!-- Label y Input en una fila -->
+                    <label for="example-month-input" class="col-sm-4 col-form-label">Eliga la Fecha Inicio*</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="date" id="example-month-input"
+                            (change)="cambiarFehaInicio($event)">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <!-- <h4 class="card-title"><span class="lstick"></span>Tratamiento realizados por fecha </h4> -->
+                    </div>
+                </div>
+
+                <!-- <div *ngIf="tratamientos.length > 0"> -->
+                <div>
+                    <!-- <div style="display: block; width: 100%;">
+                        <canvas
+                            id="lineChart"
+                        >
+                        </canvas>
+                    </div> -->
+                    <div style="display: block; width: 100%;">
+                        <canvas id="myPieChart"></canvas> <!-- Aquí se renderiza la gráfica -->
+                        <!-- <canvas 
+                            baseChart
+                                [datasets]="[{ data: pieChartData, label: 'Frecuencias' }]"
+                                [labels]="pieChartLabels"
+                                [chartType]="pieChartType"
+                                [colors]="pieChartColors"> 
+                        </canvas> -->
+                    </div>                      
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive m-t-20 no-wrap">
+                    <table class="table vm no-th-brd pro-of-month">
+                        <thead>
+                            <tr>
+                                <!-- <th colspan="2">Assigned</th> -->
+                                <th>Doctor</th>
+                                <th>Cantidad Total</th>
+                                <!-- <th>Fecha</th>
+                                <th>Monto</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let dato of dato_listado">
+                                <td>
+                                    <h6>{{ dato.doctor }}</h6>
+                                </td>
+                                <td>{{ dato.frecuencia }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

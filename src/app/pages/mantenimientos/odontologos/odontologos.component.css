@@ -1,0 +1,10 @@
+/* Estilos para el select cuando el estado es activo o inactivo */
+.activo {
+    background-color: #d4edda;
+    color: #0e9b2f;
+}
+
+.inactivo {
+    background-color: #f8d7da;
+    color: #b90215;
+}

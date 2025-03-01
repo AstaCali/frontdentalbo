@@ -1,0 +1,19 @@
+.d-flex {
+    display: flex;
+  }
+  
+  .justify-content-between {
+    justify-content: space-between;
+  }
+  
+  .align-items-center {
+    align-items: center;
+  }
+  
+  .form-label {
+    margin-right: 10px; /* Espacio entre la etiqueta y el autocomplete */
+  }
+  
+  ng-autocomplete {
+    flex: 1; /* Permite que el autocomplete use el espacio restante */
+  }

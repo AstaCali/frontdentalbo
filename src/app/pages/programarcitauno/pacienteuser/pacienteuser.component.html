@@ -1,0 +1,58 @@
+
+<div class="modal-scrollable">
+    <div class="modal-header">
+        <h5 class="modal-title" id="addPatientModalLabel">Añadir Paciente</h5>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="userPersonForm" (submit)="guardarDatos()">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="name">* Nombre</label>
+                  <input type="text" class="form-control" id="name" formControlName="name" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="last_name">* Apellido</label>
+                  <input type="text" class="form-control" id="last_name" formControlName="last_name" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>* Sexo</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="hombre" value="M" formControlName="gender" required>
+                <label class="form-check-label" for="hombre">Hombre</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="mujer" value="F" formControlName="gender" required>
+                <label class="form-check-label" for="mujer">Mujer</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="celular">* Celular</label>
+                  <input type="tel" class="form-control" id="celular" formControlName="celular" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="ci">Num. de Identificación</label>
+                  <input type="number" class="form-control" id="ci" formControlName="ci">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">* Email</label>
+              <input type="email" class="form-control" id="email" formControlName="email" required>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Guardar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

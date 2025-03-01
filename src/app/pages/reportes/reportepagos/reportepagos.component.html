@@ -1,0 +1,316 @@
+<!-- <p>reportepagos works!</p> -->
+<!-- <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Reporte de Pagos por Tratamiento</h3>
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Hoy</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Esta Semana</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Este Mes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Intervalo</a>
+              </li>
+            </ul>
+            <div class="table-responsive">
+              <table class="table table-bordered mt-3">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Fecha</th>
+                    <th>Paciente</th>
+                    <th>Procedimiento</th>
+                    <th>Precio Total</th>
+                    <th>Detalles de Pago</th>
+                    <th>Fecha</th>
+                    <th>Monto</th>
+                    <th>Moneda</th>
+                    <th>Tipo de Pago</th>
+                    <th>Factura</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>ene. 24, 2024 18:20</td>
+                    <td>ALBERTO MUÑOZ ZURITA</td>
+                    <td>CONTROL MENSUAL DE ORTODONCIA</td>
+                    <td>250</td>
+                    <td>
+                      <div>abr 19, 2024 16:25</div>
+                    </td>
+                    <td>250</td>
+                    <td>Bs</td>
+                    <td>Efectivo</td>
+                    <td>No</td>
+                    <td>250 (Bs)</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>abr. 04</td>
+                    <td>Litian Puro</td>
+                    <td>PROTESIS FLEXIBLE</td>
+                    <td>1,200</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="text-right">
+              <h5>Total Pago</h5>
+            </div>
+          </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- <div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+
+          </div>
+      </div>
+  </div>
+</div>  -->
+
+<!-- <div class="card">
+  <div class="container">
+
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Reporte de Pagos por Tratamiento</h3>
+
+          <div class="filters">
+            <select>
+              <option value="all">Elija un paciente</option>
+              <option value="1">Paciente 1</option>
+              <option value="2">Paciente 2</option>
+            </select>
+            <select>
+              <option value="all">Todos</option>
+              <option value="1">Tratamiento 1</option>
+              <option value="2">Tratamiento 2</option>
+            </select>
+            <select>
+              <option value="all">Filtro de Tratamiento</option>
+              <option value="1">Tratamiento 1</option>
+              <option value="2">Tratamiento 2</option>
+            </select>
+            <label>
+              <input type="checkbox" /> Más Detalles
+            </label>
+          </div>
+
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Hoy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Esta Semana</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Este Mes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Intervalo</a>
+            </li>
+          </ul>
+
+          <br>
+          <p>Periodo: {{ currentDate }}</p>
+
+          <div class="table-responsive">
+            <table class="table table-bordered mt-3">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Paciente</th>
+                  <th>Fecha</th>
+                  <th>Tratamiento</th>
+                  <th>Precio Final</th>
+                  <th>Acuenta</th>
+                  <th>Pagos Bs.</th>
+                  <th>Saldo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reppago of reportePagosArray; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ reppago.Quote_detail.Treatment.name_treatment }}</td>
+                  <td>{{ reppago.fecha_pago }}</td>
+                  <td>{{ reppago.Quote_detail.Treatment.name_treatment }}</td>
+                  <td>{{ reppago.Quote_detail.discounted_price }}</td>
+                  <td>{{ reppago.monto }}</td>
+                  <td>{{ reppago.monto }}</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-header">
+            <h5 class="modal-title">Añadir Paciente</h5>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Reporte de Pagos</h4>
+          <!-- <h6 class="card-subtitle">{{ titulo_fecha }} &amp; Total:{{ totalReportePago }}</h6> -->
+        <!-- <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF &amp; Print</h6> -->
+        <div class="dt-buttons">
+          <a class="dt-button buttons-copy buttons-html5 cursor"
+          (click)="fechaActual()"
+            [class.morado]="currentDate"
+            tabindex="0" aria-controls="example23"><span>Hoy</span>
+          </a>
+          <a class="dt-button buttons-csv buttons-html5 cursor"
+            (click)="actualMes()"
+            [class.morado]="mes"
+            tabindex="0" aria-controls="example23"><span>Este Mes</span></a>
+          <!-- <a class="dt-button buttons-excel buttons-html5" tabindex="0" aria-controls="example23" href="#"><span>Excel</span></a>
+          <a class="dt-button buttons-pdf buttons-html5" tabindex="0" aria-controls="example23" href="#"><span>PDF</span></a> -->
+          <a class="dt-button buttons-print" tabindex="0" aria-controls="example23"
+            (click)="onImprimir()"
+          >
+            <span><i class="mdi mdi-fax ml-2 avatar cursor"></i></span>
+          </a>
+        </div>
+        <!-- (input)="onInputPerson($event)" -->
+        <div id="example23_filter" class="dataTables_filter">
+          <label><i class="fa fa-close text-danger" (click)="eliminarPerson()"></i>
+            <input type="search" class="" placeholder="Filtro de Paciente" aria-controls="example23"
+              list="datalistOptionspersonpag"
+              id="exampleDataListpersonpag"
+              (input)="onInputPerson($event)"
+            >
+          </label>
+          <datalist id="datalistOptionspersonpag">
+            <option *ngFor="let person of personArray" [value]="person.name + ' ' + person.last_name">
+          </datalist>
+        </div>
+
+        <div id="example23_filter" class="dataTables_filter">
+          <label><i class="fa fa-close text-danger" (click)="eliminarTreatment()"></i>
+            <input type="search" class="" placeholder="Filtro de Tratamiento" aria-controls="example23"
+              list="datalistOptionspagos"
+              id="exampleDataListpagos"
+              (input)="onInputTreatment($event)"
+            >
+          </label>
+          <datalist id="datalistOptionspagos">
+            <option *ngFor="let treatment of tratamientoArray" [value]="treatment.name_treatment">
+          </datalist>
+        </div>
+        <!-- <hr> -->
+        <div class="table-responsive m-t-40">
+          <div id="example23_wrapper" class="dataTables_wrapper">
+            <h6 class="card-subtitle">Periodo: {{ titulo_fecha }} &amp; Total:({{ totalReportePago }}) - {{ desde }}</h6>
+            <table id="example23" class="display nowrap table table-hover table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="example23_info" style="width: 100%;">
+              <thead>
+                <tr role="row">
+                  <th
+                      aria-label="Name: activate to sort column descending"
+                      style="width: 16px;"
+                  >
+                  #</th>
+                  <th aria-label="Position: activate to sort column ascending" style="width: 239px;">
+                  Paciente</th>
+                  <th aria-label="Office: activate to sort column ascending" style="width: 118px;">
+                  Fecha</th>
+                  <th aria-label="Office: activate to sort column ascending" style="width: 118px;">
+                  Tratamiento</th>
+                  <th aria-label="Age: activate to sort column ascending" style="width: 56px;">
+                  Tipo de Pago</th>
+                    <th aria-label="Age: activate to sort column ascending" style="width: 56px;">
+                  Precio Final</th>
+                  <th aria-label="Start date: activate to sort column ascending" style="width: 107px;">
+                  A Cuenta</th>
+                  <th aria-label="Salary: activate to sort column ascending" style="width: 91px;">
+                  Pagos Bs.</th>
+                  <th aria-label="Salary: activate to sort column ascending" style="width: 91px;">
+                  Saldo</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th rowspan="1" colspan="1">#</th>
+                  <th rowspan="1" colspan="1">Paciente</th>
+                  <th rowspan="1" colspan="1">Fecha</th>
+                  <th rowspan="1" colspan="1">Tratamiento</th>
+                  <th rowspan="1" colspan="1">Tipo de Pago</th>
+                  <th rowspan="1" colspan="1">Precio Final</th>
+                  <th rowspan="1" colspan="1">A cuenta</th>
+                  <th rowspan="1" colspan="1">Pagos Bs.</th>
+                  <th rowspan="1" colspan="1">Saldo</th>
+                </tr>
+              </tfoot>
+              <tbody>
+
+                <tr role="row" class="odd" *ngFor="let reppago of reportePagosArray; let i = index">
+                  <td class="sorting_1">{{ i + 1 }}</td>
+                  <td>{{ reppago.Quote_detail.Quotation.Person.name }} {{reppago.Quote_detail.Quotation.Person.last_name}}</td>
+                  <td>{{ reppago.fecha_pago }}</td>
+                  <td>{{ reppago.Quote_detail.Treatment.name_treatment }}</td>
+                  <td>{{ reppago.tipo_pago }}</td>
+                  <td>{{ reppago.Quote_detail.discounted_price }}</td>
+                  <td>{{ reppago.monto }}</td>
+                  <td>{{ reppago.monto }}</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table>
+
+        </div>
+
+      </div>
+      <div class="dataTables_wrapper">
+        <div class="dataTables_info" id="example23_info" role="status" aria-live="polite">
+          Total Pagos Bs.: {{ totalDiscountedPrice }}
+        </div>
+        <div class="dataTables_paginate paging_simple_numbers">
+          <button (click)="cambiarPagina(-4)" class="btn btn-secondary">Anterior</button>
+          &nbsp;
+          <button (click)="cambiarPagina(4)" class="btn btn-secondary">Siguiente</button>
+        </div>
+      </div>
+      <!-- <div class="dataTables_info" id="example23_info" role="status" aria-live="polite">Total Pagos Bs.: 890</div>
+        <div class="dataTables_paginate paging_simple_numbers" >
+
+          <button (click)="cambiarPagina(-4)" class="btn btn-secondary">Anterior</button>
+          &nbsp;
+          <button (click)="cambiarPagina(4)" class="btn btn-secondary">Siguiente</button>
+
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
